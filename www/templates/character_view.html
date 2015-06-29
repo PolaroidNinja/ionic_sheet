@@ -3,45 +3,74 @@
       {{vm.character.name}} -- {{vm.character.class}} {{vm.character.level}}
       <a id="editMode" class="ion-edit" ng-class="{toggled: vm.editMode}" ng-click="vm.editMode = !vm.editMode"></a>
   </ion-nav-title>
-  <ion-content>
-    <div ng-if="vm.editMode" class="list">
-      <label class="item item-input">
-        <div class="input-label">
-          Name:
-        </div>
-        <input type="text" name="characterName" placeholder="Name" ng-model="vm.character.name">
-      </label>
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Class:
-        </div>
-        <select ng-model="vm.character.class" ng-options="stat.name as key for (key, stat) in vm.charClasses">
+  <ion-content scroll="false">
+    <tab-slide-box tab="0">
+       <div class="tsb-icons">
+          <div class="tsb-ic-wrp">
+            <ion-scroll direction='x' class="tsb-hscroll">
+              <a href="javascript:;"> Summary</a>
+              <a href="javascript:;">Combat</a>
+              <a href="javascript:;">Social</a>
+              <a href="javascript:;">Equipment</a>
+              <a href="javascript:;">Spells</a>
+            </ion-scroll>
+          </div>
+      </div>
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide >
+          <ion-scroll style="height:100%">
+            <div ng-if="vm.editMode" class="list">
+              <label class="item item-input">
+                <div class="input-label">
+                  Name:
+                </div>
+                <input type="text" name="characterName" placeholder="Name" ng-model="vm.character.name">
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Class:
+                </div>
+                <select ng-model="vm.character.class" ng-options="stat.name as key for (key, stat) in vm.charClasses">
+                    
+                </select>
+              </label>
+              <label class="item item-input">Level:
+                  <input ng-model="vm.character.level" type="number">
+              </label>
+            </div>
             
-        </select>
-      </label>
-      <label class="item item-input">Level:
-          <input ng-model="vm.character.level" type="number">
-      </label>
-    </div>
-    <armor-class character="vm.character" edit-mode="vm.editMode"></armor-class>
-    <hitpoints></hitpoints>
-    <ion-list>
-      <ion-item class="item-input">
-        <div class="input-label">Initiative:</div> 
-        <span ng-show="vm.modifier(vm.character.stats.dexterity.score) >= 0">+</span>
-        {{vm.modifier(vm.character.stats.dexterity.score)}}
-      </ion-item>
-      <ion-item class="speed item-input">
-        <div class="input-label">Speed:</div>
-        <span ng-if="!vm.editMode && vm.character.other.speed">{{vm.character.other.speed}}</span>
-        <span ng-if="!vm.editMode && !vm.character.other.speed">30 ft (default)</span>
-        <input ng-if="vm.editMode" type="text" ng-model="vm.character.other.speed" placeholder="30 ft"/>
-      </ion-item>
-    </ion-list>
-    <death-saves  ng-if="!vm.editMode"></death-saves>
-    
-    <character-stats character="vm.character" edit-mode="vm.editMode"></character-stats>
-    <skills character="vm.character" edit-mode="vm.editMode"></skills>
-    <quick-menu></quick-menu>
+            <character-stats character="vm.character" edit-mode="vm.editMode"></character-stats>
+            <quick-menu></quick-menu>
+          </ion-scroll>
+        </ion-slide>
+        <ion-slide>
+          <ion-scroll style="height:100%">
+            <armor-class character="vm.character" edit-mode="vm.editMode"></armor-class>
+            <hitpoints></hitpoints>
+            <ion-list>
+              <ion-item class="item-input">
+                <div class="input-label">Initiative:</div> 
+                <span ng-show="vm.modifier(vm.character.stats.dexterity.score) >= 0">+</span>
+                {{vm.modifier(vm.character.stats.dexterity.score)}}
+              </ion-item>
+              <ion-item class="speed item-input">
+                <div class="input-label">Speed:</div>
+                <span ng-if="!vm.editMode && vm.character.other.speed">{{vm.character.other.speed}}</span>
+                <span ng-if="!vm.editMode && !vm.character.other.speed">30 ft (default)</span>
+                <input ng-if="vm.editMode" type="text" ng-model="vm.character.other.speed" placeholder="30 ft"/>
+              </ion-item>
+            </ion-list>
+            <death-saves  ng-if="!vm.editMode"></death-saves>
+            </ion-scroll>
+        </ion-slide>
+        <ion-slide>
+          <ion-scroll style="height:100%">
+            <skills character="vm.character" edit-mode="vm.editMode"></skills>
+          </ion-scroll>
+        </ion-slide>
+        <ion-slide>EQUIPMENT</ion-slide>
+        <ion-slide>SPELLS</ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
   </ion-content>
 </ion-view>
