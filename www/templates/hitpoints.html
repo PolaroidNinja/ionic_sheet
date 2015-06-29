@@ -1,0 +1,29 @@
+<div class="list">
+    <ion-item class="item-divider"> 
+        Combat:
+    </ion-item>
+    <div class="item item-input" ng-if="vm.editMode">
+        <div class="input-label">HP:</div>
+       <input ng-model="vm.character.combat.hp.max" type="number"/>
+    </div>
+   <div class="item range range-assertive" ng-if="!vm.editMode">
+       <input 
+              name="hitpoints" 
+              type="range" 
+              min="0" 
+              max="{{vm.character.combat.hp.max}}" 
+              step="1"
+              ng-model="vm.character.combat.hp.current"/>
+       <div>{{vm.character.combat.hp.current}} HP / {{vm.character.combat.hp.max}} HP</div>
+    </div>
+    <ion-item ng-if="!vm.editMode">
+        Hit Dice: {{vm.character.combat.hitDice.current}}{{vm.character.combat.hitDice.type}} / {{vm.character.level}}{{vm.character.combat.hitDice.type}}
+    </ion-item>
+    <ion-item class="item-input item-select" ng-if="vm.editMode">
+        <div class="input-label">Hit Dice:</div>
+       <select ng-model="vm.character.combat.hitDice.type" 
+            placeholder="{{vm.character.combat.hitDice.type}}"
+            ng-options="item for item in ['d4','d6','d8','d10','d12','d20']">
+       </select>
+    </ion-item>
+</div>

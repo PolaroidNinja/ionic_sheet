@@ -1,0 +1,5 @@
+<ion-item class="item-input">
+<div class="input-label">AC:</div>
+<span ng-show="!armorVM.editMode">{{armorVM.AC}}</span>
+<input ng-show="armorVM.editMode" type="number" placeholder="{{armorVM.AC}}" ng-model="armorVM.ACOverride"/>
+</ion-item>

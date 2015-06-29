@@ -1,0 +1,18 @@
+<ion-view>
+  <ion-nav-title align-title="right">
+      Characters
+      <a id="editMode" class="ion-edit" ng-class="{toggled: vm.listEditMode}" ng-click="vm.listEditMode = !vm.listEditMode"></a>
+  </ion-nav-title>
+  <ion-content>
+    <button ng-click="vm.createCharacter()">Create New Character</button>
+    <ion-list show-delete="vm.listEditMode">
+      <ion-item ng-if="!vm.characters.user">No Characters Found</ion-item>
+      <ion-item ng-repeat="character in vm.characters" href="#/app/characters/{{character.uid}}">
+        {{character.name}} -- {{character.class}} {{character.level}}
+        <ion-delete-button class="ion-minus-circled"
+                       ng-click="vm.deleteCharacter(character.uid)">
+        </ion-delete-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

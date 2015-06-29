@@ -1,0 +1,31 @@
+/* Empty. Add your own CSS if you like */
+.right {
+    float: right;
+}
+
+#editMode {
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.toggled {
+    color: blue !important;
+}
+
+.skills .ion-checkmark-circled, .stats .ion-checkmark-circled {
+    visibility: hidden;
+}
+
+.skills .ion-checkmark-circled.prof, .stats .ion-checkmark-circled.prof {
+    visibility: visible;
+}
+
+.stats input[type="number"] {
+    height: inherit;
+    width: 100%;
+}
+
+.stats label.checkbox {
+    z-index: -1;
+}

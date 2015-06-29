@@ -1,0 +1,26 @@
+<div class="list">
+     <ion-item class="item-divider" ng-click="deathSavesVM.open = !deathSavesVM.open">
+        Death Saves:
+        <div class="right icon" ng-class="{'ion-arrow-down-b':deathSavesVM.open, 'ion-arrow-right-b':!deathSavesVM.open}"></div>
+    </ion-item>
+    <ion-item class="row" ng-show="deathSavesVM.open">
+        <ion-list class="col">
+            <ion-item class="item-checkbox" 
+                ng-repeat="save in vm.character.combat.death.successes track by $index">
+                <label class="checkbox">
+                   <input type="checkbox">
+                 </label>
+                 Success {{$index + 1}}
+            </ion-item>
+        </ion-list>
+        <ion-list class="col">
+            <ion-item class="item-checkbox" 
+                ng-repeat="save in vm.character.combat.death.failures track by $index">
+                <label class="checkbox">
+                   <input ng-model="save" type="checkbox">
+                 </label>
+                 Failure {{$index + 1}}
+            </ion-item>
+        </ion-list>
+    </ion-item>
+</div>

@@ -1,0 +1,18 @@
+<ion-list>
+    <ion-item class="item-divider"> 
+        Skills:
+    </ion-item>
+    <ion-item class="skills"
+        ng-class="{'item-checkbox': skillsVM.editMode, 'item-icon-left':!skillsVM.editMode}"
+        ng-repeat="(key,stat) in skillsVM.skillList | orderBy:['attribute']" 
+        ng-click="skillsVM.skillsClick(key);">
+        <span ng-if="!skillsVM.editMode" class="ion-checkmark-circled icon" ng-class="{'prof':skillsVM.character.proficiencies.skills[key]}"></span>
+        {{key}} ({{stat.attribute}}) 
+        <label class="checkbox" ng-if="skillsVM.editMode">
+            <input type="checkbox"
+                ng-disabled="!skillsVM.editMode"
+                ng-model="skillsVM.character.proficiencies.skills[key]"
+                />
+        </label>
+    </ion-item>
+</ion-list>

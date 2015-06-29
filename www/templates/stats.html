@@ -1,0 +1,25 @@
+<ion-list>
+    <ion-item class="item-divider"> 
+        Stats:
+    </ion-item>
+    <ion-item class="stats"
+        ng-class="{'item-checkbox': statsVM.editMode, 'item-icon-left':!statsVM.editMode}"
+        ng-repeat="stat in statsVM.character.stats | orderObjectBy:'order'">
+        <label class="checkbox" ng-if="statsVM.editMode">
+            <input type="checkbox"
+                ng-disabled="!statsVM.editMode"
+                ng-model="statsVM.character.proficiencies.saves[stat.key]"
+                />
+        </label>
+        <div class="row">
+            
+            <span ng-if="!statsVM.editMode" class="ion-checkmark-circled icon col" ng-class="{'prof':statsVM.character.proficiencies.saves[stat.key]}"></span>
+            <div class="col">{{stat.key}} : </div>
+            <div ng-if="!statsVM.editMode" class="col">{{stat.score}}</div>
+            <div ng-if="statsVM.editMode" class="col">
+                <input ng-model="statsVM.character.stats[stat.key].score" type="number">
+            </div>
+            <div class="col">(<span ng-show="statsVM.modifier(statsVM.character.stats[stat.key].score) >= 0">+</span>{{statsVM.modifier(statsVM.character.stats[stat.key].score)}})</div>
+        </div>
+    </ion-item>
+</ion-list>
