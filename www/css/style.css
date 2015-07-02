@@ -33,3 +33,7 @@
 .slider ion-scroll > div {
     padding-bottom: 50px;
 }
+
+.statName {
+    text-transform: capitalize;
+}

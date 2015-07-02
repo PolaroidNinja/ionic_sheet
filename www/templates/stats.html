@@ -14,7 +14,7 @@
         <div class="row">
             
             <span ng-if="!statsVM.editMode" class="ion-checkmark-circled icon col" ng-class="{'prof':statsVM.character.proficiencies.saves[stat.key]}"></span>
-            <div class="col">{{stat.key}} : </div>
+            <div class="col statName">{{stat.key}} : </div>
             <div ng-if="!statsVM.editMode" class="col">{{stat.score}}</div>
             <div ng-if="statsVM.editMode" class="col">
                 <input ng-model="statsVM.character.stats[stat.key].score" type="number">
