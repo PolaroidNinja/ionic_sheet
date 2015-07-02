@@ -29,3 +29,7 @@
 .stats label.checkbox {
     z-index: -1;
 }
+
+.slider ion-scroll > div {
+    padding-bottom: 50px;
+}

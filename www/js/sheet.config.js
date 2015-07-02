@@ -42,7 +42,6 @@
             other: null
         },
         background: {
-            name: null,
             trait: null,
             personality: null,
             flaw: null,
