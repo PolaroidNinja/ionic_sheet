@@ -11,6 +11,7 @@
               <a href="javascript:;"> Summary</a>
               <a href="javascript:;">Combat</a>
               <a href="javascript:;">Social</a>
+              <a href="javascript:;">Abilities</a>
               <a href="javascript:;">Equipment</a>
               <a href="javascript:;">Spells</a>
             </ion-scroll>
@@ -67,6 +68,11 @@
         <ion-slide>
           <ion-scroll style="height:100%">
             <skills character="vm.character" edit-mode="vm.editMode"></skills>
+          </ion-scroll>
+        </ion-slide>
+        <ion-slide>
+          <ion-scroll style="height:100%;">
+            <ng-include src="'templates/abilities.html'"></ng-include>
           </ion-scroll>
         </ion-slide>
         <ion-slide>EQUIPMENT</ion-slide>

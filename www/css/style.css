@@ -33,3 +33,17 @@
 .slider ion-scroll > div {
     padding-bottom: 50px;
 }
+
+.slider .abilities {
+    min-height: 250px;
+    padding: 10px;
+}
+
+.pre {
+    white-space: pre;
+}
+
+.slider .abilities textarea {
+    width:100%;
+    resize: none;
+}

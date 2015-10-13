@@ -1,0 +1,7 @@
+<div class="card" ng-repeat="(key, value) in vm.character.background">
+  <div class="item item-text-wrap">
+    <h2 style="text-transform: capitalize;">{{key}}</h2>
+    <input ng-if="vm.editMode" type="text" placeholder="{{key}}" ng-model="vm.character.background[key]"/>
+    <span ng-if="!vm.editMode">{{value}}</span>
+  </div>
+</div>

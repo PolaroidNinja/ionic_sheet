@@ -47,6 +47,9 @@
             flaw: null,
             bonds: null
         },
+        abilities: {
+          user: ""
+        },
         equipment: null,
         spells: null
     });
