@@ -37,3 +37,17 @@
 .statName {
     text-transform: capitalize;
 }
+
+.slider .abilities {
+    min-height: 250px;
+    padding: 10px;
+}
+
+.pre {
+    white-space: pre;
+}
+
+.slider .abilities textarea {
+    width:100%;
+    resize: none;
+}

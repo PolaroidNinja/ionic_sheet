@@ -1,0 +1,7 @@
+<div class="card abilities">
+    <textarea ng-if="vm.editMode" type="text" ng-model="vm.character.abilities.user" placeholder="Class and Race Abilities" rows="8"></textarea>
+    <div ng-if="!vm.editMode">
+        <h2>Abilities</h2>
+            <span class="pre">{{vm.character.abilities.user}}</span>
+        </div>
+</div>
