@@ -20,7 +20,6 @@
         
         function characterStatCTRL(charactersFactory) {
             var vm = this;
-            //vm.character = charactersFactory.getCharacterById(vm.characterUid);
             vm.modifier = charactersFactory.getModifier;
             return vm;
         }

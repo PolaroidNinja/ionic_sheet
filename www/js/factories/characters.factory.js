@@ -13,6 +13,7 @@
             saveCharacter: _saveCharacter,
             deleteCharacter: _deleteCharacter,
             getModifier: _getMod,
+            generateUID: generateUID
         };
         
         return result;

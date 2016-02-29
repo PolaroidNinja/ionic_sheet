@@ -1,0 +1,25 @@
+<ion-scroll style="height:100%">
+    <div ng-if="vm.editMode" class="list">
+        <label class="item item-input">
+            <div class="input-label">
+                Name:
+            </div>
+            <input type="text" name="characterName" placeholder="Name" ng-model="vm.character.name">
+        </label>
+        <label class="item item-input item-select">
+            <div class="input-label">
+                Class:
+            </div>
+            <select ng-model="vm.character.class" ng-options="stat.name as key for (key, stat) in vm.charClasses">
+
+            </select>
+        </label>
+        <label class="item item-input">Level:
+            <input ng-model="vm.character.level" type="number">
+        </label>
+    </div>
+
+    <character-stats character="vm.character" edit-mode="vm.editMode"></character-stats>
+    <ng-include src="'templates/background.html'"></ng-include>
+    <!--<quick-menu></quick-menu>-->
+</ion-scroll>

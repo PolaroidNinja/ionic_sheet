@@ -47,13 +47,24 @@
             flaw: null,
             bonds: null
         },
-        abilities: {
-          user: ""
-        },
+        abilities: {},
         equipment: null,
         spells: null
+    })
+    .constant('TEMPLATES', {
+        MODALS: {
+            ABILITIES: 'templates/ability_modal.html',
+            EDIT_ABILITIES: 'templates/edit_ability_modal.html'
+        }
     });
 
+    angular.module('sheet')
+    .constant('NEW_ABILITY_TEMPLATE', {
+       name: "",
+       type: "",
+       level: 1,
+       description: ""
+    });
 
     /////////////////////////////
     //sheetConfigs.$inject['$stateProvider', '$urlRouterProvider'];

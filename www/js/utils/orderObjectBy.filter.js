@@ -6,8 +6,8 @@
     
     function orderObjectBy () {
       return function(input, attribute) {
+        console.log(input, attribute);
           if (!angular.isObject(input)) return input;
-          console.log(input);
           var array = [];
           for(var objectKey in input) {
               input[objectKey].key = objectKey;

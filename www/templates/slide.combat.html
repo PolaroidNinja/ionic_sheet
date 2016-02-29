@@ -1,0 +1,18 @@
+<ion-scroll style="height:100%">
+    <armor-class character="vm.character" edit-mode="vm.editMode"></armor-class>
+    <hitpoints></hitpoints>
+    <ion-list>
+        <ion-item class="item-input">
+            <div class="input-label">Initiative:</div> 
+            <span ng-show="vm.modifier(vm.character.stats.dexterity.score) >= 0">+</span>
+            {{vm.modifier(vm.character.stats.dexterity.score)}}
+        </ion-item>
+        <ion-item class="speed item-input">
+            <div class="input-label">Speed:</div>
+            <span ng-if="!vm.editMode && vm.character.other.speed">{{vm.character.other.speed}}</span>
+            <span ng-if="!vm.editMode && !vm.character.other.speed">30 ft (default)</span>
+            <input ng-if="vm.editMode" type="text" ng-model="vm.character.other.speed" placeholder="30 ft"/>
+        </ion-item>
+    </ion-list>
+    <death-saves  ng-if="!vm.editMode"></death-saves>
+</ion-scroll>
