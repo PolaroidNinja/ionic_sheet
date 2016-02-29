@@ -47,7 +47,7 @@
             flaw: null,
             bonds: null
         },
-        abilities: {},
+        abilities: [],
         equipment: null,
         spells: null
     })

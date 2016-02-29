@@ -45,7 +45,7 @@
                 description: ability.description,
                 order: vm.character.abilities.length || 0
             };
-            vm.character.abilities[uid] = abilityObj;
+            vm.character.abilities.push(abilityObj);
             vm.closeAbilityModal();
         }
         
@@ -53,8 +53,8 @@
             $scope.modal.hide();
         }
         
-        vm.editCard = function(type, uid, editorTemplate) {
-            vm.editing = vm.character[type][uid];
+        vm.editCard = function(ability, editorTemplate) {
+            vm.editing = ability;
             var hideSheet = $ionicActionSheet.show({
                 titleText: vm.editing.name,
                 cancelText: "Cancel",
