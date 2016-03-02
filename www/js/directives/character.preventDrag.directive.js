@@ -7,17 +7,11 @@
     
         link : function(scope, elem, attrs, e) {
           var reportEvent = function (e){
-    
-            if  (e.target.tagName.toLowerCase() == 'input'){
-                $ionicSlideBoxDelegate.enableSlide(false);
-            }
-            else{
-                $ionicSlideBoxDelegate.enableSlide(true);
-            }
+            $ionicSlideBoxDelegate.enableSlide(e.type === 'release');
           };
     
-    
-          $ionicGesture.on('drag', reportEvent, elem);
+          $ionicGesture.on('touch', reportEvent, elem);
+          $ionicGesture.on('release', reportEvent, elem);
         }
       };
     });

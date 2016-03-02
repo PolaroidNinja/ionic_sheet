@@ -53,6 +53,13 @@
             $scope.modal.hide();
         }
         
+        vm.reorderItem = function(ability, fromIndex, toIndex) {
+            console.log(ability,fromIndex,toIndex);
+            console.log(vm.character.abilities[fromIndex]);
+            vm.character.abilities.splice(fromIndex,1);
+            vm.character.abilities.splice(toIndex,0,ability);
+        }
+        
         vm.editCard = function(ability, editorTemplate) {
             vm.editing = ability;
             var hideSheet = $ionicActionSheet.show({
