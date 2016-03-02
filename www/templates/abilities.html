@@ -4,14 +4,20 @@
             ng-click="vm.openModal('ABILITIES')">
         Add an ability
     </button>
+    <button ng-if="vm.ability.reorder" 
+            class="button button-block button-light icon-left ion-minus"
+            ng-click="vm.ability.reorder = false">
+        Done Reordering
+    </button>
     <ion-list prevent-drag
-                show-reorder="vm.editMode">
+                can-swipe="vm.editMode"
+                show-reorder="vm.ability.reorder">
         <ion-item ng-repeat="ability in vm.character.abilities"
                   class="item">
             <h2>{{ability.name}}</h2>
             <p>{{ability.description}}</p>
             <ion-option-button class="button-assertive" ng-click="vm.editCard(ability, 'EDIT_ABILITIES')">
-                edit <i class="icon ion-edit"></i>
+                edit &nbsp; <i class="icon ion-edit"></i>
             </ion-option-button>
             <ion-reorder-button class="ion-navicon"
                 on-reorder="vm.reorderItem(ability, $fromIndex, $toIndex)">

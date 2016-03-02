@@ -13,6 +13,9 @@
         vm.currentSlide;
        
         vm.editMode = true;
+        vm.ability = {
+            reorder: false
+        };
         
         
         $scope.$watch(function() { return vm.editMode; }, function() {
@@ -54,10 +57,9 @@
         }
         
         vm.reorderItem = function(ability, fromIndex, toIndex) {
-            console.log(ability,fromIndex,toIndex);
-            console.log(vm.character.abilities[fromIndex]);
             vm.character.abilities.splice(fromIndex,1);
             vm.character.abilities.splice(toIndex,0,ability);
+            charactersFactory.saveCharacter(vm.character);
         }
         
         vm.editCard = function(ability, editorTemplate) {
@@ -81,19 +83,15 @@
                 },
                 buttons: [
                     {text: "Edit"},
-                    {text: "Move Up"},
-                    {text: "Move Down"},
+                    {text: "Reorder"}
                 ],
                 buttonClicked: function(index) {
                     switch(index){
                         case 0: 
                             vm.openModal(editorTemplate);
                             break;
-                        case 1: 
-                            vm.editing.order = parseInt(vm.editing.order) - 1;
-                            break;
-                        case 2:
-                            vm.editing.order = parseInt(vm.editing.order) + 1;
+                        case 1:
+                            vm.ability.reorder = true;
                             break;
                     }
                     
