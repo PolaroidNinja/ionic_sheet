@@ -6,7 +6,7 @@
     angular.module('sheet')
     .constant('NEW_CHARACTER_TEMPLATE', {
         uid: null,
-        name: "Unnamed Character",
+        name: "Unnamed",
         class: "No Class",
         stats: {
             "strength": { "score": 10, "order": 0},

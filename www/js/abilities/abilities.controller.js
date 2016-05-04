@@ -5,7 +5,7 @@
     function abilitiesCTRL($scope, $stateParams, charactersFactory, classesFactory, $ionicModal, $ionicActionSheet, TEMPLATES) {
         var abilityVM = this;
         
-         abilityVM.character = charactersFactory.getCharacterById($stateParams.characterId);
+        abilityVM.character = charactersFactory.getCharacterById($stateParams.characterId);
         
         abilityVM.openModal = function(modalType) {
             $ionicModal.fromTemplateUrl(TEMPLATES.MODALS[modalType], {
@@ -40,7 +40,7 @@
             charactersFactory.saveCharacter(abilityVM.character);
         }
         
-        abilityVM.editCard = function(ability, editorTemplate) {
+        abilityVM.editCard = function(ability, editorTemplate, index) {
             abilityVM.editing = ability;
             var hideSheet = $ionicActionSheet.show({
                 titleText: abilityVM.editing.name,
@@ -51,7 +51,8 @@
                         titleText: "Confirm Deleting " + abilityVM.editing.name,
                         destructiveText: "Delete",
                         destructiveButtonClicked: function() {
-                            delete abilityVM.character[type][uid];
+                            abilityVM.character.abilities.splice(index, 1);
+                            charactersFactory.saveCharacter(abilityVM.character);
                             return true;
                         },
                         cancelText: "Cancel"
@@ -69,7 +70,7 @@
                             abilityVM.openModal(editorTemplate);
                             break;
                         case 1:
-                            abilityVM.ability.reorder = true;
+                            abilityVM.reorder = true;
                             break;
                     }
                     

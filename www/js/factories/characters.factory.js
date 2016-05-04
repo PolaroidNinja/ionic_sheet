@@ -6,6 +6,8 @@
     ////////////////////
     
     function charactersFactory ($localstorage) {
+        var characterCache;
+        
         var result = {
             getCharactersList: _getCharacters,
             getCharacterById: _getCharacterById,
@@ -23,10 +25,14 @@
         }
         
         function _getCharacterById (uid) {
-            var characters = _getCharacters();
-            if(characters) {
-                return characters[uid];
-            }
+            if(!characterCache || characterCache.uid !== uid) {
+                var characters = _getCharacters();
+                if(characters && characters[uid]) {
+                    characterCache = characters[uid];
+                }
+            } 
+            
+            return characterCache;
         }
         
         function _createCharacter (config) {
