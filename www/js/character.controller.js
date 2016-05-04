@@ -30,75 +30,75 @@
             return Math.floor((scoreInt - 10) / 2);
         }
         
-        vm.openModal = function(modalType) {
-            $ionicModal.fromTemplateUrl(TEMPLATES.MODALS[modalType], {
-                scope: $scope,
-                animation: 'slide-in-up'
-            }).then(function(modal) {
-                $scope.modal = modal;
-                $scope.modal.show();
-            });
-        }
+        // vm.openModal = function(modalType) {
+        //     $ionicModal.fromTemplateUrl(TEMPLATES.MODALS[modalType], {
+        //         scope: $scope,
+        //         animation: 'slide-in-up'
+        //     }).then(function(modal) {
+        //         $scope.modal = modal;
+        //         $scope.modal.show();
+        //     });
+        // }
         
-        vm.addAbility = function(ability) {
-            var uid = charactersFactory.generateUID();
-            var abilityObj = {
-                id: uid,
-                name: ability.name,
-                description: ability.description,
-                order: vm.character.abilities.length || 0
-            };
-            vm.character.abilities.push(abilityObj);
-            vm.closeAbilityModal();
-        }
+        // vm.addAbility = function(ability) {
+        //     var uid = charactersFactory.generateUID();
+        //     var abilityObj = {
+        //         id: uid,
+        //         name: ability.name,
+        //         description: ability.description,
+        //         order: vm.character.abilities.length || 0
+        //     };
+        //     vm.character.abilities.push(abilityObj);
+        //     vm.closeAbilityModal();
+        // }
         
-        vm.closeAbilityModal = function() {
-            $scope.modal.hide();
-        }
+        // vm.closeAbilityModal = function() {
+        //     $scope.modal.hide();
+        // }
         
-        vm.reorderItem = function(ability, fromIndex, toIndex) {
-            vm.character.abilities.splice(fromIndex,1);
-            vm.character.abilities.splice(toIndex,0,ability);
-            charactersFactory.saveCharacter(vm.character);
-        }
+        // vm.reorderItem = function(ability, fromIndex, toIndex) {
+        //     vm.character.abilities.splice(fromIndex,1);
+        //     vm.character.abilities.splice(toIndex,0,ability);
+        //     charactersFactory.saveCharacter(vm.character);
+        // }
         
-        vm.editCard = function(ability, editorTemplate) {
-            vm.editing = ability;
-            var hideSheet = $ionicActionSheet.show({
-                titleText: vm.editing.name,
-                cancelText: "Cancel",
-                destructiveText: "Delete",
-                destructiveButtonClicked: function() {
-                    $ionicActionSheet.show({
-                        titleText: "Confirm Deleting " + vm.editing.name,
-                        destructiveText: "Delete",
-                        destructiveButtonClicked: function() {
-                            delete vm.character[type][uid];
-                            return true;
-                        },
-                        cancelText: "Cancel"
-                    });
+        // vm.editCard = function(ability, editorTemplate) {
+        //     vm.editing = ability;
+        //     var hideSheet = $ionicActionSheet.show({
+        //         titleText: vm.editing.name,
+        //         cancelText: "Cancel",
+        //         destructiveText: "Delete",
+        //         destructiveButtonClicked: function() {
+        //             $ionicActionSheet.show({
+        //                 titleText: "Confirm Deleting " + vm.editing.name,
+        //                 destructiveText: "Delete",
+        //                 destructiveButtonClicked: function() {
+        //                     delete vm.character[type][uid];
+        //                     return true;
+        //                 },
+        //                 cancelText: "Cancel"
+        //             });
                 
-                    return true;
-                },
-                buttons: [
-                    {text: "Edit"},
-                    {text: "Reorder"}
-                ],
-                buttonClicked: function(index) {
-                    switch(index){
-                        case 0: 
-                            vm.openModal(editorTemplate);
-                            break;
-                        case 1:
-                            vm.ability.reorder = true;
-                            break;
-                    }
+        //             return true;
+        //         },
+        //         buttons: [
+        //             {text: "Edit"},
+        //             {text: "Reorder"}
+        //         ],
+        //         buttonClicked: function(index) {
+        //             switch(index){
+        //                 case 0: 
+        //                     vm.openModal(editorTemplate);
+        //                     break;
+        //                 case 1:
+        //                     vm.ability.reorder = true;
+        //                     break;
+        //             }
                     
-                    return true;
-                }
-            });
-        }
+        //             return true;
+        //         }
+        //     });
+        // }
         
         return vm;
     }

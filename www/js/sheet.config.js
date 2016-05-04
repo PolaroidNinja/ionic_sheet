@@ -53,8 +53,8 @@
     })
     .constant('TEMPLATES', {
         MODALS: {
-            ABILITIES: 'templates/ability_modal.html',
-            EDIT_ABILITIES: 'templates/edit_ability_modal.html'
+            ABILITIES: 'js/abilities/ability_modal.html',
+            EDIT_ABILITIES: 'js/abilities/edit_ability_modal.html'
         }
     });
 

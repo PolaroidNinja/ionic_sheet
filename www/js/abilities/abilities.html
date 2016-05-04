@@ -1,7 +1,7 @@
-<div class="abilities">
+<div class="abilities" ng-controller="abilitiesCTRL as abilityVM">
     <button ng-if="vm.editMode" 
             class="button button-block button-light icon-left ion-plus"
-            ng-click="vm.openModal('ABILITIES')">
+            ng-click="abilityVM.openModal('ABILITIES')">
         Add an ability
     </button>
     <button ng-if="vm.ability.reorder" 
@@ -12,15 +12,15 @@
     <ion-list prevent-drag
                 can-swipe="vm.editMode"
                 show-reorder="vm.ability.reorder">
-        <ion-item ng-repeat="ability in vm.character.abilities"
+        <ion-item ng-repeat="ability in abilityVM.character.abilities"
                   class="item">
             <h2>{{ability.name}}</h2>
             <p>{{ability.description}}</p>
-            <ion-option-button class="button-assertive" ng-click="vm.editCard(ability, 'EDIT_ABILITIES')">
+            <ion-option-button class="button-assertive" ng-click="abilityVM.editCard(ability, 'EDIT_ABILITIES')">
                 edit &nbsp; <i class="icon ion-edit"></i>
             </ion-option-button>
             <ion-reorder-button class="ion-navicon"
-                on-reorder="vm.reorderItem(ability, $fromIndex, $toIndex)">
+                on-reorder="abilityVM.reorderItem(ability, $fromIndex, $toIndex)">
             </ion-reorder-button>
         </div>
         </ion-item>

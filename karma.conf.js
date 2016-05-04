@@ -15,6 +15,8 @@ module.exports = function(config) {
         files: [
             'tests/testMain.js',
             {pattern: 'tests/js/**/*.spec.js'},
+            {pattern: 'www/js/**/*.js'},
+            {pattern: 'www/templates/**/*.html'},
         ],
 
 
